@@ -1,0 +1,20 @@
+print("Welcome to the tip calculator!")
+
+# All inputted data is currently as a string data type.
+bill = input("What was the total bill? $")
+tip = input("How much tip would you like to give? 10, 12 or 15 percent? Do not enter the % symbol. ")
+no_of_people = input("How many people are there to split the bill? ")
+
+# final_bill refers to bill total after factoring in tips (conversion into float can happen at the input step)
+final_bill = float(bill)*(100 + int(tip))/100
+
+# split_bill is the amount each person pays as a float. We need to round this to the nearest cent.
+split_bill = final_bill/int(no_of_people)
+
+# This is achieved by the round() function and is referred to as variable rounded_split_bill.
+rounded_split_bill = round(split_bill,2)
+
+# However, if the total bill is $150, the tip is 12% and the number of people present is 5, we end up with a 1d.p. answer of $33.6.
+# Using google and stackoverflow.com, we can find a solution to the formatting issue. The no. of dp it is rounded to depends on the number placed between {}.
+rounded_split_bill = "{:.2f}".format(rounded_split_bill)
+print(f"Each person should pay: ${rounded_split_bill}")
